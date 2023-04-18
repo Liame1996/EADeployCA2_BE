@@ -25,7 +25,7 @@ steps:
 - task: Docker@2
   displayName: 'docker build and push'
   inputs:
-    containerRegistry: 'knolanacr'
+    containerRegistry: 'kanolanacr'
     repository: $(imageName):$(version)
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
