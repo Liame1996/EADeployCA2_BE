@@ -17,9 +17,6 @@
         <version.spring.core>5.2.12.RELEASE</version.spring.core>
         <version.mongodb>4.1.1</version.mongodb>
         <version.junit>4.12</version.junit>
-    </properties>
-    
-    <properties>
         <sonar.organization>liame1996</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
