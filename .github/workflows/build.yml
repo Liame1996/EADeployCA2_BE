@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   build:
-    name: Build and analyze
+    name: SonarCloud Analysis
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -35,3 +35,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Liame1996_EADeployCA2_BE
+
+  Build_WAR_file:
+    name: Build WAR File
+    runs-on: ubuntu-latest
+    steps:
+      -uses: actions/checkout@v3
+      -name: Set up JDK 17
+       uses: actions/setup-jave@3
+       with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Build with Maven
+        run: jar -cvf EADEPLOYCA2_BE.war *
