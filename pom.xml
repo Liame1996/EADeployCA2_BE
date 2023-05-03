@@ -13,7 +13,7 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <jakartaee>11.0</jakartaee>
+        <jakartaee>8.0</jakartaee>
         <version.spring.core>5.2.12.RELEASE</version.spring.core>
         <version.mongodb>4.1.1</version.mongodb>
         <version.junit>4.12</version.junit>
@@ -21,6 +21,7 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     
+
     <dependencies>
         <dependency>
             <groupId>org.mongodb</groupId>
@@ -54,7 +55,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>3.5.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
