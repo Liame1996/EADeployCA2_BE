@@ -54,7 +54,7 @@ jobs:
     steps:
       - name: Build Docker image
         run: 
-          cd EADeployCA2_BE
+          cd "EADeployCA2_BE"
           docker build -t eadca2-app .
 
       - name: Save Docker image to file
