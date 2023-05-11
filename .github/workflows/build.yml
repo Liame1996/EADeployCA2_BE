@@ -52,10 +52,10 @@ jobs:
   Build_Docker_Container:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
       - name: Build Docker image
-        run: docker build -t eadca2-app .
+        run: 
+          cd EADeployCA2_BE
+          docker build -t eadca2-app .
 
       - name: Save Docker image to file
         run: docker save -o eadca2-app.tar eadca2-app
