@@ -54,8 +54,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with: 
-
       - name: Build Docker image
         working-directory: EADeployCA2_BE
         run: docker build -t bearla/eadca2-repo:latest ./EADeployCA2_BE/Dockerfile eadca2-app .
