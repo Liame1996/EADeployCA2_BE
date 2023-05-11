@@ -6,7 +6,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  build:
+  SonarCloud_Analysis:
     name: SonarCloud Analysis
     runs-on: ubuntu-latest
     steps:
@@ -38,6 +38,7 @@ jobs:
 
   Build_WAR_file:
     name: Build WAR File
+    needs: SonarCloud_Analysis
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -48,3 +49,12 @@ jobs:
           distribution: 'temurin'
       - name: Build with Maven
         run: jar -cvf EADEPLOYCA2_BE.war *
+
+  Build_Docker_Container:
+    name: Docker Container Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the docker image
+        working-directory: 03-app-dotnet
+        run: docker build
