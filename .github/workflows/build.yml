@@ -57,6 +57,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build Docker image
+        working-directory: EADeployCA2_BE
         run: docker build --file Dockerfile -t eadca2-app .
 
       - name: Save Docker image to file
