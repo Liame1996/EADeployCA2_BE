@@ -56,7 +56,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build Docker image
-        run: docker build .
+        run: docker build -t eadca2-app .
 
       - name: Save Docker image to file
         run: docker save -o eadca2-app.tar eadca2-app
