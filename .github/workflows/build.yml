@@ -52,7 +52,7 @@ jobs:
 
   Build_Docker_Container:
     need: Build_WAR_File
-      build: 
+      build:
         runs-on: ubuntu-latest
 
         steps:
