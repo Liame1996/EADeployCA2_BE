@@ -54,8 +54,8 @@ jobs:
     need: Build_WAR_File
     build:
       runs-on: ubuntu-latest
-
       steps:
+        - uses: actions/checkout@v3 
         - name: Checkout code
           uses: actions/checkout@v2
 
