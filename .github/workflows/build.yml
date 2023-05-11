@@ -53,9 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build Docker image
-        run: 
-          cd "EADeployCA2_BE"
-          docker build -t eadca2-app .
+        run: docker build -t eadca2-app -f Dockerfile .
 
       - name: Save Docker image to file
         run: docker save -o eadca2-app.tar eadca2-app
