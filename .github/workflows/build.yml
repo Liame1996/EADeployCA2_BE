@@ -51,7 +51,7 @@ jobs:
         run: jar -cvf EADEPLOYCA2_BE.war *
 
   Build_Docker_Container:
-    need: Build_WAR_file
+    needs: Build_WAR_file
     build:
     runs-on: ubuntu-latest
     steps:
