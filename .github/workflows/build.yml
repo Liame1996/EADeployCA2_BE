@@ -57,7 +57,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build Docker image
-        run: docker build --file '**/Dockerfile' -t eadca2-app .
+        run: docker build --file ../../Dockerfile -t eadca2-app .
 
       - name: Save Docker image to file
         run: docker save -o eadca2-app.tar eadca2-app
