@@ -22,8 +22,6 @@ jobs:
 
     - name: Build WAR file
       run: mvn --batch-mode --update-snapshots verify
-      env:
-        MAVEN_OPTS: '-Dmaven.repo.local=$HOME/.m2/repository'
       # optional: use 'run: mvn test' to run tests
 
     - name: Login to container registry
