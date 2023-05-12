@@ -21,7 +21,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build WAR file
-      run: mvn clean package
+      run: mvn
       env:
         MAVEN_OPTS: '-Dmaven.repo.local=$HOME/.m2/repository'
       # optional: use 'run: mvn test' to run tests
@@ -34,12 +34,10 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        run: |
-          docker build -t bearla/eadca2-app:latest .
-          docker push bearla/eadca2-app:latest
+      
+      run: |
+        docker build -t bearla/eadca2-app:latest .
+        docker push bearla/eadca2-app:latest
       #uses: docker/build-push-action@v2
       #with:
       #  context: .
