@@ -33,6 +33,9 @@ jobs:
 
     - name: Build Docker image
       run: docker build -t bearla/eadca2-app .
+
+    - name: Push docker Image
+      run: docker push bearla/eadca2-app:latest
       #run: |
       #  docker build -t bearla/eadca2-app:latest .
       #  docker push bearla/eadca2-app:latest
