@@ -32,8 +32,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image
-      runs-on: ubuntu-latest
-      run: docker build -t eadca2-app .
+      run: docker build -t bearla/eadca2-app .
       #run: |
       #  docker build -t bearla/eadca2-app:latest .
       #  docker push bearla/eadca2-app:latest
