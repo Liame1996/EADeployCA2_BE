@@ -1,24 +1,50 @@
-name: Container
+name: Build and Deploy
+
 on:
   push:
     branches:
-      - master
-  pull_request:
-    types: [opened, synchronize, reopened]
+      - main
+
 jobs:
-  Build_Docker_Container:
-    #needs: Build_WAR_file
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Build Docker image
-        run: docker build -t eadca2-app .
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Save Docker image to file
-        run: docker save -o eadca2-app.tar eadca2-app
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
 
-      - name: Upload Docker image
-        uses: actions/upload-artifact@v2
-        with:
-          name: eadca2-app
-          path: eadca2-app.tar
+    - name: Build WAR file
+      run: mvn clean package
+      env:
+        MAVEN_OPTS: '-Dmaven.repo.local=$HOME/.m2/repository'
+      # optional: use 'run: mvn test' to run tests
+
+    - name: Login to container registry
+      uses: docker/login-action@v1
+      with:
+        registry: bearla
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: bearla/eadca2-app:latest
+
+    - name: Update service manifest
+      run: sed -i "s/bprestws:latest/bearla\/eadca2-app:latest/" create-service-manifest.yaml
+
+    - name: Publish YAML artifact
+      uses: docker/metadata-action@v3
+      with:
+        images: bearla/eadca2-app:latest
+        manifest-file: create-service-manifest.yaml
+      # optional: use 'uses: actions/upload-artifact@v2' to upload the YAML artifact
