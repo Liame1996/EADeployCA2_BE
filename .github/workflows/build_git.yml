@@ -33,9 +33,8 @@ jobs:
 
     - name: Build Docker image
       runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
-          run: docker build -t eadca2-app .
+      uses: actions/checkout@v3
+      run: docker build -t eadca2-app .
       #run: |
       #  docker build -t bearla/eadca2-app:latest .
       #  docker push bearla/eadca2-app:latest
