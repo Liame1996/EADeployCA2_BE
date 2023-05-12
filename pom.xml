@@ -84,7 +84,7 @@
                             <goal>copy</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
+                            <outputDirectory>/home/runner/work/EADeployCA2_BE/EADeployCA2_BE</outputDirectory>
                             <silent>true</silent>
                             <artifactItems>
                                 <artifactItem>
