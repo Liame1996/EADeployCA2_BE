@@ -36,6 +36,10 @@ jobs:
 
     - name: Push docker Image
       run: docker push bearla/eadca2-app:latest
+
+    - name: Install Trivy
+      run: |
+        curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v${{ env.TRIVY_VERSION }}
       #run: |
       #  docker build -t bearla/eadca2-app:latest .
       #  docker push bearla/eadca2-app:latest
