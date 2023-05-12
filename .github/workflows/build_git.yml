@@ -34,10 +34,12 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push Docker image
-      
-      run: |
-        docker build -t bearla/eadca2-app:latest .
-        docker push bearla/eadca2-app:latest
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        run: |
+          docker build -t bearla/eadca2-app:latest .
+          docker push bearla/eadca2-app:latest
       #uses: docker/build-push-action@v2
       #with:
       #  context: .
