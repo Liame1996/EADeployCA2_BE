@@ -27,7 +27,7 @@ jobs:
       # optional: use 'run: mvn test' to run tests
 
     - name: Login to container registry
-      uses: docker/login-action@v1
+      uses: docker/login-action@v2
       with:
         #registry: hub.docker.com
         username: ${{ secrets.DOCKER_USERNAME }}
