@@ -49,6 +49,8 @@ jobs:
           distribution: 'temurin'
       - name: Build with Maven
         run: mvn clean package
+        env:
+          MAVEN_OPTS: '-Dmaven.repo.local=$HOME/.m2/repository'
       #  run: jar -cvf BPRestWS-1.0-SNAPSHOT.war *
       #- uses: actions/Maven@4
       #  inputs:
