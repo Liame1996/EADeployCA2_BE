@@ -1,0 +1,24 @@
+name: Container
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  Build_Docker_Container:
+    needs: Build_WAR_file
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Docker image
+        run: docker build -t eadca2-app .
+
+      - name: Save Docker image to file
+        run: docker save -o eadca2-app.tar eadca2-app
+
+      - name: Upload Docker image
+        uses: actions/upload-artifact@v2
+        with:
+          name: eadca2-app
+          path: eadca2-app.tar
