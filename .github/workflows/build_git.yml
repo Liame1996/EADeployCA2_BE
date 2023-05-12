@@ -21,7 +21,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build WAR file
-      run: mvn --batch-mode --update-snapshots verify
+      run: mvn --batch-mode --update-snapshots verify -f pom.xml
       # optional: use 'run: mvn test' to run tests
 
     - name: Login to container registry
