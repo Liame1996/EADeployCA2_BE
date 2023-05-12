@@ -17,11 +17,11 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v3
       with:
-        java-version: '11'
+        java-version: '17'
         distribution: 'temurin'
 
     - name: Build WAR file
-      run: mvn
+      run: mvn --batch-mode
       env:
         MAVEN_OPTS: '-Dmaven.repo.local=$HOME/.m2/repository'
       # optional: use 'run: mvn test' to run tests
