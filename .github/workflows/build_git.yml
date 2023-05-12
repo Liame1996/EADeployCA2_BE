@@ -34,12 +34,16 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        file: ./Dockerfile
-        push: true
-        tags: bearla/eadca2-app:latest
+      
+      run: |
+        docker build -t bearla/eadca2-app:latest
+        docker push bearla/eadca2-app:latest
+      #uses: docker/build-push-action@v2
+      #with:
+      #  context: .
+      #  file: ./Dockerfile
+      #  push: true
+      #  tags: bearla/eadca2-app:latest
 
     - name: Update service manifest
       run: sed -i "s/bprestws:latest/bearla\/eadca2-app:latest/" create-service-manifest.yaml
