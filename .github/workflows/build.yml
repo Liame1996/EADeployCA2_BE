@@ -48,7 +48,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Maven
-        run: jar -cvf BPRestWS-1.0-SNAPSHOT.war *
+        run: jar -cvf target/BPRestWS-1.0-SNAPSHOT.war *
 
   Build_Docker_Container:
     needs: Build_WAR_file
