@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   Build_Docker_Container:
-    needs: Build_WAR_file
+    #needs: Build_WAR_file
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
