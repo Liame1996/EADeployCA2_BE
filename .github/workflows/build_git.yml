@@ -21,8 +21,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build WAR file
-      uses: actions/checout@v3
-      run: mvn --batch-mode
+      run: war -cvf BPRestWS-1.0-SNAPSHOT.war *
       env:
         MAVEN_OPTS: '-Dmaven.repo.local=$HOME/.m2/repository'
       # optional: use 'run: mvn test' to run tests
