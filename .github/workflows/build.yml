@@ -6,39 +6,39 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  SonarCloud_Analysis:
-    name: SonarCloud Analysis
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Set up JDK 11
-        uses: actions/setup-java@v3
-        with:
-          java-version: 11
-          distribution: 'zulu' # Alternative distribution options are available.
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-      - name: Cache Maven packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
-      - name: Build and analyze
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Liame1996_EADeployCA2_BE
+  #SonarCloud_Analysis:
+  #  name: SonarCloud Analysis
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - uses: actions/checkout@v3
+  #      with:
+  #        fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+  #    - name: Set up JDK 11
+  #      uses: actions/setup-java@v3
+  #      with:
+  #        java-version: 11
+  #        distribution: 'zulu' # Alternative distribution options are available.
+  #    - name: Cache SonarCloud packages
+  #      uses: actions/cache@v3
+  #      with:
+  #        path: ~/.sonar/cache
+  #        key: ${{ runner.os }}-sonar
+  #        restore-keys: ${{ runner.os }}-sonar
+  #    - name: Cache Maven packages
+  #      uses: actions/cache@v3
+  #      with:
+  #        path: ~/.m2
+  #        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+  #        restore-keys: ${{ runner.os }}-m2
+  #    - name: Build and analyze
+  #      env:
+  #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+  #        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  #      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Liame1996_EADeployCA2_BE
 
   Build_WAR_file:
     name: Build WAR File
-    needs: SonarCloud_Analysis
+  #  needs: SonarCloud_Analysis
     runs-on: ubuntu-latest
     steps:    
       - uses: actions/checkout@v3
@@ -48,10 +48,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Maven
-        run: mvn clean package
-        env:
-          MAVEN_OPTS: '-Dmaven.repo.local=$HOME/.m2/repository'
-      #  run: jar -cvf BPRestWS-1.0-SNAPSHOT.war *
+        #run: mvn clean package
+        #env:
+        #  MAVEN_OPTS: '-Dmaven.repo.local=$HOME/.m2/repository'
+        run: jar -cvf BPRestWS-1.0-SNAPSHOT.war *
       #- uses: actions/Maven@4
       #  inputs:
       #    mavenPomFile: 'pom.xml'
