@@ -40,7 +40,7 @@ jobs:
     - name: Install Trivy
       run: |
         curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh
-
+        
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
       with:
@@ -54,7 +54,7 @@ jobs:
         severity: 'CRITICAL,HIGH'
 
     - name: Upload Trivy scan results to GitHub Security tab
-      uses: uses: actions/upload-artifact@v2
+      uses: github/codeql-action/upload-sarif@v2
       with:
         sarif_file: 'trivy-results.sarif' 
 
