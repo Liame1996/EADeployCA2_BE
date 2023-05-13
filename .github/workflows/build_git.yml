@@ -40,7 +40,7 @@ jobs:
     - name: Install Trivy
       run: |
         curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh
-
+        
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
       with:
