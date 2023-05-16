@@ -153,7 +153,6 @@ jobs:
         ./kustomize build . | kubectl apply -f -
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
-        .
 
     - name: Update service manifest
       run: sed -i "s/bprestws:latest/bearla\/eadca2-app:latest/" create-service-manifest.yaml
