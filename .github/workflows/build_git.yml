@@ -55,8 +55,8 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
-    #- name: Build WAR file
-    #  run: mvn --batch-mode --update-snapshots verify -f pom.xml
+    - name: Build WAR file
+      run: mvn --batch-mode --update-snapshots verify -f pom.xml
       # optional: use 'run: mvn test' to run tests
 
     - name: Install Nodejs for unittest
@@ -134,9 +134,6 @@ jobs:
       uses: github/codeql-action/upload-sarif@v2
       with:
         sarif_file: 'trivy-results.sarif' 
-
-    - name: Push docker Image
-      run: docker push bearla/eadca2-app:latest
 
     # Push the Docker image to Google Container Registry
     - name: Publish
