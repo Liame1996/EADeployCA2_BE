@@ -165,3 +165,5 @@ jobs:
         images: bearla/eadca2-app:latest
         manifest-file: create-service-manifest.yaml
       # optional: use 'uses: actions/upload-artifact@v2' to upload the YAML artifact
+
+      #version demo
